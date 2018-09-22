@@ -1,6 +1,10 @@
 // Powered by Infostretch 
 
-timestamps {
+pipeline {
+	tools {
+		maven 'Maven 3.3.9'
+        jdk 'jdk8'
+	}
 
 node () {
 
@@ -10,7 +14,7 @@ node () {
 	stage ('test-convertBuild - Build') {
  	
 // Unable to convert a build step referring to "hudson.plugins.timestamper.TimestamperBuildWrapper". Please verify and convert manually if required.		// Maven build step
-	withMaven { 
+	steps { 
  			if(isUnix()) {
  				sh "mvn clean test " 
 			} else { 
